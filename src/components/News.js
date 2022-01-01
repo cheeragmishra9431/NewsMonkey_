@@ -14,12 +14,16 @@ export class News extends Component {
        pageSize:PropTypes.number,
        category:PropTypes.string
     }
-    constructor(){
-        super();
+     capitalizeFirstLetter=(string)=> {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+    constructor(props){
+        super(props);
         console.log(" hello iam constructor from news component");
         this.state={articles:[],
                     loading:false,
                     page:1};
+        document.title=`${this.capitalizeFirstLetter(this.props.category)} - NewsMonkey`;
     }
     async updateNews(){
         const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7e27f55f007242aca05ce4c8f7e2d4fd&page=${this.state.page}&pageSize=${this.props.pageSize}`;
@@ -70,13 +74,13 @@ export class News extends Component {
     render() {
         return (
             <div className='container my-3'>
-                <h1 className='text-center'style={{margin:'35px 0px'}} >NewsMonkey-Top Headline</h1>
+                <h1 className='text-center'style={{margin:'35px 0px'}} >NewsMonkey-Top Headlines on {this.capitalizeFirstLetter(this.props.category)}</h1>
                 { this.state.loading &&<Spinner />}
                 <div className="row">
                     {!this.state.loading &&this.state.articles.map((element)=>{return <div className="col-md-4" key={element.url}>
                         
                         <NewsItem  title={element.title?element.title.slice(0,45):""} description={element.description?element.description.slice(0,88):""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}/>
-                        
+                         
                     </div>})}
                 </div>
                 <div className="container d-flex justify-content-between">
