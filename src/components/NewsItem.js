@@ -1,4 +1,4 @@
-import { getByTitle } from "@testing-library/react";
+
 import React, { Component } from "react";
 
 export class NewsItem extends Component {
@@ -9,7 +9,8 @@ export class NewsItem extends Component {
         <div className="card">
           <img
             src={imageUrl}
-            alt="https://www.shutterstock.com/image-vector/abstract-business-logo-corporate-identity-design-1826060273"
+            // alt="https://www.shutterstock.com/image-vector/abstract-business-logo-corporate-identity-design-1826060273"
+            alt="Image not available"
           />
           <div className="card-body">
             <h5 className="card-title">
