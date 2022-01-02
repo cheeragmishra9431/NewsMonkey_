@@ -10,7 +10,7 @@ export class NewsItem extends Component {
           <img
             src={imageUrl}
             // alt="https://www.shutterstock.com/image-vector/abstract-business-logo-corporate-identity-design-1826060273"
-            alt="Image not available"
+            alt="Not available"
           />
           <div className="card-body">
             <h5 className="card-title">
